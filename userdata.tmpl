@@ -1,0 +1,6 @@
+#!/bin/bash
+yum install -y awscli
+service docker start
+docker run -d --restart=always alpine/bombardier --connections=${connections} --timeout=${timeout}s --method=${method} -k --duration=${duration}s ${website}
+sleep ${duration}
+aws ec2 terminate-instances --instance-ids $(curl -s http://169.254.169.254/latest/meta-data/instance-id) --region ${region}
