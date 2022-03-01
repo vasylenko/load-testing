@@ -31,3 +31,6 @@ Multiple websites, e.g., you need to test several deployment tiers `foo.website 
 terraform apply -var aws_profile_name=testing -var aws_account_id=YOUR_AWS_ACCOUNT -var list='["foo.website","bar.website"]' 
 ```
 
+
+#### Possible Improvements
+- use `aws_spot_fleet_request` https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/spot_fleet_request
