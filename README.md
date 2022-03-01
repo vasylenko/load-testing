@@ -23,12 +23,12 @@ Assuming that you have local awscli profile named `testing`
 Single website, e.g., you need to test your QA environment `qa.web.site`
 
 ```shell
-terraform apply -var aws_profile_name=testing -var aws_account_id=YOUR_AWS_ACCOUNT -var list='["qa.web.site"]' 
+terraform apply -var aws_profile_name=testing -var aws_account_id=YOUR_AWS_ACCOUNT_ID -var list='["qa.web.site"]' 
 ```
 
 Multiple websites, e.g., you need to test several deployment tiers `foo.website and bar.website`.
 ```shell
-terraform apply -var aws_profile_name=testing -var aws_account_id=YOUR_AWS_ACCOUNT -var list='["foo.website","bar.website"]' 
+terraform apply -var aws_profile_name=testing -var aws_account_id=YOUR_AWS_ACCOUNT_ID -var list='["foo.website","bar.website"]' 
 ```
 
 

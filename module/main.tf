@@ -71,10 +71,6 @@ resource "aws_launch_template" "this" {
   instance_type = var.instance_type
   user_data     = local.userdata_script
 
-  iam_instance_profile {
-    arn = aws_iam_instance_profile.this.arn
-  }
-
   network_interfaces {
     associate_public_ip_address = true
   }
@@ -93,12 +89,6 @@ resource "aws_iam_role_policy" "terminate_self" {
   role   = aws_iam_role.this.id
 }
 
-# uncomment for debugging purposes to access the instance using Instance Connect
-#resource "aws_iam_role_policy_attachment" "ssm" {
-#  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-#  role       = aws_iam_role.this.name
-#}
-
 resource "aws_instance" "this" {
   count = var.in_count
   launch_template {
@@ -107,3 +97,11 @@ resource "aws_instance" "this" {
   }
   iam_instance_profile = aws_iam_instance_profile.this.name
 }
+
+
+
+# uncomment for debugging purposes to access the instance using Instance Connect
+#resource "aws_iam_role_policy_attachment" "ssm" {
+#  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+#  role       = aws_iam_role.this.name
+#}
